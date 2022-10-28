@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+  dynamodb:
+    image:  amazon/dynamodb-local
+    container_name: my-dynamodb
+    hostname: dynamodb
+    restart: always
+    volumes:
+      -  ./my-dynamodb-data:/home/dynamodblocal/data
+    ports:
+      - 8000:8000
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath /home/dynamodblocal/data/"
+    networks:
+      - local
+  app-frontend:
+    image: flask-docker-frontend-app:latest
+    container_name: app-frontend
+    ports:
+      - 8080:8080
+    restart: always
+    volumes:
+      - ./frontend:/usr/src/frontend
+    depends_on:
+      - app-backend
+    networks:
+      - local
+  app-backend:
+    image: flask-docker-app:latest
+    container_name: app-backend
+    ports:
+      - 5000:5000
+    restart: always
+    volumes:
+      - ./backend:/usr/src/backend
+    networks:
+      - local
+
+networks:
+  local:
+    driver: bridge

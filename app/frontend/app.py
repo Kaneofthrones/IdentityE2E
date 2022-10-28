@@ -5,7 +5,7 @@ import os
 from flask import Flask, session, url_for, redirect, render_template, request, abort, flash
 
 app = Flask(__name__)
-BACKEND_URL = os.environ.get("BACKEND_URL", default="http://localhost:5000")
+BACKEND_URL = os.environ.get("http://app-backend:5000", default="http://localhost:5000")
 
 @app.errorhandler(401)
 def FUN_401(error):
@@ -52,4 +52,4 @@ def FUN_checkout():
     return render_template("checkout_error.html")
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080)
+    app.run(debug=True, host='0.0.0.0', port=8080)
