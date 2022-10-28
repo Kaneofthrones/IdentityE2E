@@ -1,6 +1,6 @@
 # Identity E2E Infrastructure Demo
 
-dentityE2E has been identified by a client to migrate an existing on-premises service from a datacentre to the cloud. The client sees this migration as an avenue for reducing costs and increasing their service reliability as their existing service is suffering from outages due to hardware failures. They would also like to take this opportunity to increase their security posture due to several high-profile news items relating to information security. The client does not have experience working with cloud platforms and has approached you asking you implement a pilot solution.
+IdentityE2E has been identified by a client to migrate an existing on-premises service from a datacentre to the cloud. The client sees this migration as an avenue for reducing costs and increasing their service reliability as their existing service is suffering from outages due to hardware failures. They would also like to take this opportunity to increase their security posture due to several high-profile news items relating to information security. The client does not have experience working with cloud platforms and has approached you asking you implement a pilot solution.
 The environment will be extended in the future as their services are migrated. The client has indicated that they would rather use AWS over a platform as a service (Heroku, AppEngine, etc) as this would facilitate their integration with other Cloud-based partners.
 
 ## Task 
@@ -40,12 +40,18 @@ All terraform code can be found in the /terraform directory
 
 This code will provision a VPC, security groups, Iam permisisons and a DynamoDB Table 
 
+
+
 ### 3. Package app into docker images
 
 build the Dockerfiles in both and frontend and backend folders of the app directory and tag with the appriate aws account number and distination prefix so they can then be pushed to ECR on AWS 
- ```docker tag flask-docker-frontend-app:latest <aws_account number>.dkr.ecr.eu-west-2.amazonaws.com/flask-docker-frontend-app:latest
+
+ ```
+    docker tag flask-docker-frontend-app:latest <aws_account number>.dkr.ecr.eu-west-2.amazonaws.com/. flask-docker-frontend-app:latest
  
- docker push <aws_account number>.dkr.ecr.eu-west-2.amazonaws.com/flask-docker-frontend-app:latest```
+ docker push <aws_account number>.dkr.ecr.eu-west-2.amazonaws.com/flask-docker-frontend-app:latest
+ 
+ ```
 
 ### 4. Test locally
 
