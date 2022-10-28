@@ -9,4 +9,4 @@
 *tfplan
 .DS_Store
 .project
-
+*.venv
