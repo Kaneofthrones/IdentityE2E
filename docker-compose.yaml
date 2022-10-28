@@ -12,6 +12,7 @@ services:
     command: "-jar DynamoDBLocal.jar -sharedDb -dbPath /home/dynamodblocal/data/"
     networks:
       - local
+      - default
   app-frontend:
     image: flask-docker-frontend-app:latest
     container_name: app-frontend
@@ -24,6 +25,7 @@ services:
       - app-backend
     networks:
       - local
+      - default
   app-backend:
     image: flask-docker-app:latest
     container_name: app-backend
@@ -34,7 +36,8 @@ services:
       - ./backend:/usr/src/backend
     networks:
       - local
+      - default
 
 networks:
   local:
-    driver: bridge
+  default:

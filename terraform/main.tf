@@ -586,10 +586,10 @@ resource "aws_dynamodb_table" "name_table" {
   billing_mode   = "PROVISIONED"
   read_capacity  = 1
   write_capacity = 1
-  hash_key       = "name"
+  hash_key       = "Username"
 
   attribute {
-    name = "name"
+    name = "Username"
     type = "S"
   }
 }
